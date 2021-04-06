@@ -45,7 +45,8 @@ class ReviewComponent extends React.Component {
             
             const reviewList = this.state.reviews.map(review =>{
             
-                // const reviewPhotos = review.
+                const reviewPhotos = <div>Photos</div>
+                /*
                  const reviewPhotos = Array.from(review.reviewPhotos).map(photo => {
                      return(
                      <div className="photoContainerMini">
@@ -53,7 +54,7 @@ class ReviewComponent extends React.Component {
                      </div>
                      );
                  });
-     
+                 */
                  return(
                      <div className="review">
                          <div className="review_titleSection col-7">
