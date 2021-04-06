@@ -1,17 +1,23 @@
 import React from 'react';
 import './App.css';
-import ReviewComponent from './components/Review/reviewComponent'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
+  
+  const getJoke = () => {
+    axios.get('https://official-joke-api.appspot.com/random_joke')
+    .then(response => {
+      console.log(response.data)
+    });
+  }
+  
   return (
-    <Router>
-      <div> 
-        <Switch>
-          <Route path='/' component={ReviewComponent}/>
-        </Switch>
+
+      <div className='App'> 
+        <button onClick={getJoke}>Get Joke</button>
       </div>
-    </Router>
+   
   );
 }
 
