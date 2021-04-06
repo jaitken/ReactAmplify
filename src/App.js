@@ -1,12 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ReviewComponent from './components/Review/reviewComponent'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <h1>YO</h1>
-    </div>
+    <Router>
+      <div> 
+        <Switch>
+          <Route path='/' component={ReviewComponent}/>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
