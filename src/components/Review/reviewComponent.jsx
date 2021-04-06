@@ -1,7 +1,6 @@
 import React from 'react';
 import ReviewService from "../../service/reviewService";
 import "./review.css";
-import StarRating from "../StarRating/starRating";
 import { Link } from "react-router-dom";
 
 
@@ -18,6 +17,7 @@ class ReviewComponent extends React.Component {
     componentDidMount(){
             ReviewService.getReviewsByItemFamily(this.state.itemFamilyID)
                 .then(response => {
+                    console.log(response.data);
                     this.setState({reviews: Array.from(response.data)})
             });
         
