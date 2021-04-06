@@ -46,7 +46,7 @@ class ReviewComponent extends React.Component {
             const reviewList = this.state.reviews.map(review =>{
             
                 // const reviewPhotos = review.
-                 const reviewPhotos = review.reviewPhotos.map(photo => {
+                 const reviewPhotos = Array.from(review.reviewPhotos).map(photo => {
                      return(
                      <div className="photoContainerMini">
                          <img className="reviewPhotoMini" src={photo.photoURL} alt=""/>
