@@ -6,7 +6,7 @@ import axios from 'axios';
 function App() {
   
   const getJoke = () => {
-    axios.get('https://official-joke-api.appspot.com/random_joke')
+    axios.get('http://localhost:8080/api/review/getByItemFamily/2')
     .then(response => {
       console.log(response.data)
     });
@@ -15,7 +15,7 @@ function App() {
   return (
 
       <div className='App'> 
-        <button onClick={getJoke}>Get Joke</button>
+        <button onClick={getJoke}>Get Reviews</button>
       </div>
    
   );
