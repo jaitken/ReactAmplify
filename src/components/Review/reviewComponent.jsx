@@ -59,9 +59,6 @@ class ReviewComponent extends React.Component {
                      <div className="review">
                          <div className="review_titleSection col-7">
                              <div className="review_starRating">
-                                 <StarRating
-                                     starRating={review.starValue}
-                                 />
                                  
                              </div>
                              <div className="review_title">
