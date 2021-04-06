@@ -18,12 +18,13 @@ class ReviewComponent extends React.Component {
     componentDidMount(){
             ReviewService.getReviewsByItemFamily(this.state.itemFamilyID)
                 .then(response => {
-                    this.setState({reviews: response.data})
+                    this.setState({reviews: Array.from(response.data)})
             });
         
     }
 
     render(){
+
         return(
             <div className="col-12">
                 {this.renderSwitch()}
