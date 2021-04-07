@@ -16,7 +16,6 @@ class ReviewComponent extends react.Component{
         if(this.state.familyId !== undefined){
             axios.get('http://localhost:8080/api/review/getByItemFamily/'+this.state.familyId)
             .then(response => {
-            console.log(response.data)
             });
         }  
     }
@@ -25,7 +24,6 @@ class ReviewComponent extends react.Component{
         if(this.state.familyId !== this.props.familyId){
             axios.get('http://localhost:8080/api/review/getByItemFamily/'+this.props.familyId)
             .then(response => {
-                console.log(response.data)
                 this.setState({familyId: this.props.familyId,
                                 reviews: response.data})
           
