@@ -14,7 +14,7 @@ class ReviewComponent extends react.Component{
 
     componentDidMount(){
         if(this.state.familyId !== undefined){
-            axios.get('http://localhost:8080/api/review/getByItemFamily/'+this.state.familyId)
+            axios.get('http://springserver-env-1.eba-zzsuhxpv.us-east-1.elasticbeanstalk.com/api/review/getByItemFamily/'+this.state.familyId)
             .then(response => {
             });
         }  
@@ -22,7 +22,7 @@ class ReviewComponent extends react.Component{
 
     componentDidUpdate(){
         if(this.state.familyId !== this.props.familyId){
-            axios.get('http://localhost:8080/api/review/getByItemFamily/'+this.props.familyId)
+            axios.get('http://springserver-env-1.eba-zzsuhxpv.us-east-1.elasticbeanstalk.com/api/review/getByItemFamily/'+this.props.familyId)
             .then(response => {
                 this.setState({familyId: this.props.familyId,
                                 reviews: response.data})
