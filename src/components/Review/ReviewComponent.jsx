@@ -3,27 +3,79 @@ import axios from 'axios';
 
 class ReviewComponent extends react.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
-            familyId: 2,
+            familyId: props.familyId,
             reviews : []
         }
     }
 
 
     componentDidMount(){
-        axios.get('http://localhost:8080/api/review/getByItemFamily/'+2)
-        .then(response => {
-        console.log(response.data)
-        });
+        if(this.state.familyId !== undefined){
+            axios.get('http://localhost:8080/api/review/getByItemFamily/'+this.state.familyId)
+            .then(response => {
+            console.log(response.data)
+            });
+        }  
+    }
+
+    componentDidUpdate(){
+        if(this.state.familyId !== this.props.familyId){
+            axios.get('http://localhost:8080/api/review/getByItemFamily/'+this.props.familyId)
+            .then(response => {
+                console.log(response.data)
+                this.setState({familyId: this.props.familyId,
+                                reviews: response.data})
+          
+            });
+        }  
     }
     render(){
         return(
             <div>
-                YO
+                {this.renderSwitch()}
             </div>
         )
+    }
+
+    renderSwitch(){
+        if(this.state.reviews.length === 0){
+            return(
+                <div>
+                    No Reviews
+                </div>
+            );
+        }
+        else{
+            let reviewList = this.state.reviews.map(review =>{
+                return(
+                    <div className="review">
+                        <div className="review_titleSection col-7">
+                            <div className="review_title">
+                                {review.title}
+                            </div>
+                        </div>
+    
+                        <div className="review_content col-9">
+                            <span>{review.content}</span>
+                        </div>
+                        
+                        <div className="review_score">
+                            {review.score} people found this helpful
+                        </div>
+                        
+                    </div>
+                );
+            });
+
+            return(
+                <div>
+                    {reviewList}
+                </div>
+            )
+        }
     }
 }
 export default ReviewComponent;
